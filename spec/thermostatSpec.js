@@ -31,5 +31,14 @@ describe('Thermostat',function() {
       thermostat.increaseTemperature(15);
       expect(thermostat.temperature).toEqual(32);
     });
+    it("is set on by default",function() {
+      expect(thermostat.powerSavingMode).toBe(true);
+    });
+    it("can be switched off and on",function() {
+      thermostat.setPowerSavingModeOff();
+      expect(thermostat.powerSavingMode).toBe(false);
+      thermostat.setPowerSavingModeOn();
+      expect(thermostat.powerSavingMode).toBe(true);
+    });
   });
 });
