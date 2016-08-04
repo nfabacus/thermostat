@@ -1,6 +1,20 @@
 'use strict';
 
 $( document ).ready(function() {
+  $('#select-city').submit(function(event){
+    event.preventDefault();
+    var city = $("#current-city").val();
+    displayWeather(city);
+  });
+
+function displayWeather(city) {
+  var url = 'http://api.openweathermap.org/data/2.5/weather?q='+city;
+  var token = '&appid=8e081a97ce3ce35b04ff7460e037fc27';
+  var units = '&units=metric';
+  $.get(url+token+units, function(data) {
+  $('#current-temperature').text(data.main.temp);
+  });
+}
 
   var thermostat = new Thermostat();
 

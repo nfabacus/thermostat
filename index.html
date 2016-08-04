@@ -3,10 +3,17 @@
   <head>
     <meta charset="utf-8">
     <title>Thermostat</title>
-
     <link rel="stylesheet" type="text/css" href="./lib/css/style.css">
   </head>
   <body>
+    <section>
+      <h1>Current temperature: <span id="current-temperature"></span></h1>
+      <form id="select-city">
+        <input id="current-city" type="text" placeholder="Enter a city" />
+        <input type="submit" />
+      </form>
+    </section>
+
     <section>
       <h1>Thermostat</h1>
       <h2 id="display"></h2>
