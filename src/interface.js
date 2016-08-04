@@ -19,8 +19,8 @@ function displayWeather(city) {
   var thermostat = new Thermostat();
 
   function updateTemperature(){
-      $("h2#display").html(thermostat.temperature);
-      $("h2#display").attr('class', thermostat.energyUsage());
+      $("#display").html(thermostat.temperature+"°C");
+      $("#display").attr('class', thermostat.energyUsage());
   }
 
   updateTemperature();
