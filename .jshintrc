@@ -33,5 +33,6 @@
         "spyOn": false,
         "$": false,
         "_": false
-    }
+    },
+    "Thermostalt": false
 }
