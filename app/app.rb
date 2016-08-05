@@ -21,7 +21,7 @@ class Thermostat < Sinatra::Base
   end
 
   post '/cityToServer.json' do
-    headers 'Access-Control-Allow-Origin' => '*'
+    headers('Access-Control-Allow-Origin': '*')
     City.create(city: params[:city])
     puts "city from database: #{Temperature.last.city}"
     'hello'
