@@ -8,6 +8,7 @@ function Thermostat () {
   this.MAX_LIMIT_PSM_ON = 25;
   this.MEDIUM_ENERGY_USAGE_LIMIT = 18;
   this.powerSavingMode = true;
+  this.city = "";
 }
 
 Thermostat.prototype =  {
@@ -52,6 +53,9 @@ Thermostat.prototype =  {
       return 'medium-usage';
     } else if (this.temperature >= this.MAX_LIMIT_PSM_ON) {
       return 'high-usage';
+    } else {
+      return 'high-usage';
     }
+
   }
 };
