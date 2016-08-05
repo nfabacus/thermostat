@@ -6,10 +6,11 @@ require 'json' #built-in gem to parse JSON
 require_relative 'data_mapper_setup'
 
 class Thermostat < Sinatra::Base
-  get '/temperature.json' do
+  get '/thermoinfo.json' do
     headers 'Access-Control-Allow-Origin' => '*'
     tempFromDatabase = Temperature.last.temperature
-    { temperature: tempFromDatabase, city: "London" }.to_json
+    cityFromDatabase = City.last.city
+    { temperature: tempFromDatabase, city: cityFromDatabase }.to_json
   end
 
   post '/temperatureToServer.json' do
@@ -21,7 +22,8 @@ class Thermostat < Sinatra::Base
 
   post '/cityToServer.json' do
     headers 'Access-Control-Allow-Origin' => '*'
-    Temperature.create(city: params[:city])
+    City.create(city: params[:city])
+    puts "city from database: #{Temperature.last.city}"
     'hello'
   end
   # start the server if ruby file executed directly

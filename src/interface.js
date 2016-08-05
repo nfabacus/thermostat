@@ -1,8 +1,11 @@
 'use strict';
 
 var thermostat = new Thermostat();
-$.getJSON('http://localhost:9292/temperature.json', function(data) {
+$.getJSON('http://localhost:9292/thermoinfo.json', function(data) {
     thermostat.temperature = data.temperature;
+    if (data.city !== null) {
+      displayWeather(data.city);
+    }
     console.log("json temp: ", thermostat.temperature, "json city: ", data.city);
 });
 
@@ -19,6 +22,9 @@ $( document ).ready(function() {
   $('#select-city').submit(function(event){
     event.preventDefault();
     var city = $("#current-city").val();
+    $.post('http://localhost:9292/cityToServer.json', {city: city}, function(data){
+      console.log("post success! call back returned!", data);
+    });
     displayWeather(city);
   });
 
